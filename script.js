@@ -22,21 +22,24 @@ function playGame() {
 
     function playRound(humanChoice, computerChoice) {
         if (humanChoice === computerChoice) {
-            return console.log("Tie!");
-        } else if (humanChoice === 'rock' && computerChoice === 'scissors' || 
-               humanChoice === 'paper' && computerChoice === 'rock' || 
-               humanChoice === 'scissors' && computerChoice === 'paper') {
+            console.log("Tie!");
+        } else if ((humanChoice === 'rock' && computerChoice === 'scissors') || 
+               (humanChoice === 'paper' && computerChoice === 'rock') || 
+               (humanChoice === 'scissors' && computerChoice === 'paper')) {
             humanScore++;
-            return console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
+            console.log('You win! ' + humanChoice + ' beats ' + computerChoice);
         } else {
             computerScore++;
-            return console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
+            console.log('You lose! ' + computerChoice + ' beats ' + humanChoice);
         } 
     }
         for (let i = 1; i <= 5; i++) {
-            playRound();
+            const humanSelection = getHumanChoice();
+            const computerSelection = getComputerChoice();
+
+            playRound(humanSelection, computerSelection);
         }
-        
+
         console.log('Final Score: You - ' + humanScore + ', Computer - ' + computerScore);
         if (humanScore > computerScore) {
             console.log('Congratulations! You won!');
